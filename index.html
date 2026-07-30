@@ -701,6 +701,7 @@ const SKILLS = [
 ];
 
 const PROJECTS = [
+  { title:"Global Music Streaming Analytics", metric:"↓ 35% reporting time", desc:"An interactive Power BI dashboard that consolidates multi-store music data and automates a report that used to take a day to build by hand.", tags:["Power BI","Python","DAX"], github:"https://github.com/ianirbanmahanta/Global-Music-Streaming-Analytics", demo:"https://github.com/ianirbanmahanta/Global-Music-Streaming-Analytics/blob/main/images/Global_Music_Streaming_Listener.PNG" },
   { title:"Retail Sales Dashboard", metric:"↓ 35% reporting time", desc:"An interactive Power BI dashboard that consolidates multi-store sales data and automates a report that used to take a day to build by hand.", tags:["Power BI","SQL","DAX"], github:"#", demo:"#" },
   { title:"Customer Churn Prediction", metric:"84% model accuracy", desc:"A logistic regression model in Python that flags at-risk telecom customers using usage and billing history, with a Streamlit front end for the sales team.", tags:["Python","Scikit-learn","Pandas"], github:"#", demo:"#" },
   { title:"COVID-19 Trend Analysis", metric:"3 countries compared", desc:"An exploratory analysis of public health data using SQL for aggregation and Tableau for a public-facing story on case and vaccination trends.", tags:["SQL","Tableau","EDA"], github:"#", demo:"#" },
@@ -898,7 +899,7 @@ const queryText = "SELECT skill, level FROM analyst WHERE ready = true;";
 const queryLine = document.getElementById('query-line');
 const resultBody = document.getElementById('resultBody');
 const resultTable = document.getElementById('resultTable');
-const topSkillsFlat = ["SQL:90","Python:85","Power BI:88","Excel:92"];
+const topSkillsFlat = ["SQL:90","Python:85","Power BI:88","Tableau:75","Excel:92"];
 
 function typeQuery(i){
   if(i <= queryText.length){
