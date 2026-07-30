@@ -22,12 +22,58 @@
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anirban Mahanta · Data Analyst</title>
-<meta name="description" content="Portfolio of Anirban Mahanta, PW Skills certified Data Analyst — skills, projects, and a live interactive demo.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<!-- ============ PRIMARY SEO ============ -->
+<title>Anirban Mahanta | Data Analyst &amp; Business Analyst Portfolio – SQL, Python, Power BI, Tableau</title>
+<meta name="description" content="Anirban Mahanta is a PW Skills certified Data Analyst & Business Analyst specializing in SQL, Python, Power BI, Tableau and Excel. Explore data analytics projects, certifications, dashboards and a live interactive demo.">
+<meta name="keywords" content="Data Analyst, Business Analyst, Data Analyst Portfolio, SQL, Python, Power BI, Tableau, Excel, Data Visualization, Business Intelligence, Data Analytics, Dashboard Developer, PW Skills Certified Data Analyst, Anirban Mahanta">
+<meta name="author" content="Anirban Mahanta">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0B1220">
+<link rel="canonical" href="https://anirbanmahanta.dev/">
+
+<!-- ============ OPEN GRAPH (Facebook/LinkedIn) ============ -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Anirban Mahanta | Data Analyst & Business Analyst Portfolio">
+<meta property="og:description" content="PW Skills certified Data Analyst & Business Analyst — SQL, Python, Power BI, Tableau, Excel. Projects, certifications and a live interactive data demo.">
+<meta property="og:url" content="https://anirbanmahanta.dev/">
+<meta property="og:site_name" content="Anirban Mahanta — Data Analyst Portfolio">
+<meta property="og:image" content="https://anirbanmahanta.dev/og-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+
+<!-- ============ TWITTER CARD ============ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Anirban Mahanta | Data Analyst & Business Analyst Portfolio">
+<meta name="twitter:description" content="SQL, Python, Power BI, Tableau, Excel — data analytics projects, certifications and a live interactive demo.">
+<meta name="twitter:image" content="https://anirbanmahanta.dev/og-preview.png">
+
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- ============ STRUCTURED DATA (JSON-LD) — helps Google show a rich profile result ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Anirban Mahanta",
+  "jobTitle": "Data Analyst",
+  "description": "PW Skills certified Data Analyst & Business Analyst specializing in SQL, Python, Power BI, Tableau and Excel.",
+  "url": "https://anirbanmahanta.dev/",
+  "email": "mailto:anirbanmahanta.2008@mail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Bengaluru", "addressCountry": "IN" },
+  "sameAs": [
+    "https://github.com/anirbanmahanta",
+    "https://linkedin.com/in/anirbanmahanta"
+  ],
+  "knowsAbout": ["Data Analysis", "Business Analysis", "SQL", "Python", "Power BI", "Tableau", "Excel", "Data Visualization", "Business Intelligence", "Statistics"],
+  "alumniOf": { "@type": "EducationalOrganization", "name": "PW Skills" }
+}
+</script>
 <style>
 /* =================== TOKENS =================== */
 :root{
@@ -158,14 +204,23 @@ html[data-theme="light"] .theme-toggle .knob{transform:translateX(24px);}
 
 /* =================== HERO =================== */
 .hero{
+  position:relative;overflow:hidden;
   min-height:100vh;display:flex;align-items:center;
   padding-top:120px;
   background:
     radial-gradient(600px 380px at 88% 18%, rgba(var(--accent-rgb),.10), transparent 60%),
     radial-gradient(500px 320px at 6% 90%, rgba(var(--accent-2-rgb),.08), transparent 60%);
 }
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;width:100%;}
+/* animated data-network background — canvas draws nodes/edges, CSS just positions it */
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.5;}
+html[data-theme="light"] #heroCanvas{opacity:.35;}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg, transparent 55%, var(--bg) 96%);
+}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;width:100%;}
 @media(max-width:960px){.hero-grid{grid-template-columns:1fr;}}
+@media (prefers-reduced-motion: reduce){ #heroCanvas{display:none;} }
 .hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:700;line-height:1.08;margin-bottom:18px;}
 .hero h1 em{font-style:normal;color:var(--accent);}
 .hero p.lede{color:var(--text-dim);max-width:480px;font-size:1.05rem;margin-bottom:34px;}
@@ -245,6 +300,27 @@ html[data-theme="light"] .theme-toggle .knob{transform:translateX(24px);}
 @media(max-width:600px){.t-dot{left:4px;}}
 .t-content h3{font-size:1.02rem;margin-bottom:6px;}
 .t-content p{color:var(--text-dim);font-size:.86rem;}
+
+/* =================== CERTIFICATIONS =================== */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+.cert-card{
+  background:var(--bg-elev);border:1px solid var(--border);border-radius:var(--radius);
+  padding:24px;display:flex;gap:16px;transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.cert-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:rgba(var(--accent-rgb),.4);}
+.cert-badge{
+  flex-shrink:0;width:48px;height:48px;border-radius:12px;
+  background:linear-gradient(135deg, rgba(var(--accent-rgb),.16), rgba(var(--accent-2-rgb),.16));
+  border:1px solid rgba(var(--accent-rgb),.3);
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;
+}
+.cert-body h3{font-size:1rem;margin-bottom:4px;}
+.cert-issuer{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);margin-bottom:8px;}
+.cert-body p{color:var(--text-dim);font-size:.84rem;margin-bottom:10px;}
+.cert-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+.cert-date{font-family:var(--font-mono);font-size:.72rem;color:var(--text-dim);}
+.cert-link{font-size:.78rem;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:5px;}
+.cert-link:hover{text-decoration:underline;}
 
 /* =================== JOURNEY (horizontal) =================== */
 .journey-track{display:grid;grid-auto-flow:column;grid-auto-columns:230px;gap:0;overflow-x:auto;padding:10px 4px 26px;position:relative;}
@@ -362,6 +438,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
     <li><a href="#about" class="nav-a">About</a></li>
     <li><a href="#skills" class="nav-a">Skills</a></li>
     <li><a href="#projects" class="nav-a">Projects</a></li>
+    <li><a href="#certifications" class="nav-a">Certifications</a></li>
     <li><a href="#education" class="nav-a">Education</a></li>
     <li><a href="#journey" class="nav-a">Journey</a></li>
     <li><a href="#demo" class="nav-a">Live Demo</a></li>
@@ -376,11 +453,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="home">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
   <div class="hero-grid">
     <div>
-      <p class="eyebrow">PW Skills Certified · Data Analyst</p>
+      <p class="eyebrow">PW Skills Certified · Data Analyst &amp; Business Analyst</p>
       <h1>Turning raw data into <em>decisions</em> recruiters can act on.</h1>
-      <p class="lede">I'm Anirban Mahanta — I clean, model, and visualize data with Python, SQL, and BI tools to answer real business questions, fast.</p>
+      <p class="lede">I'm Anirban Mahanta, a Data Analyst &amp; Business Analyst — I clean, model, and visualize data with Python, SQL, Power BI and Tableau to answer real business questions, fast.</p>
       <div class="hero-ctas">
         <a href="#projects" class="btn btn-primary">View Projects →</a>
         <a href="Anirban Mahanta Resume.pdf" download class="btn btn-ghost">⬇ Download Resume</a>
@@ -388,7 +466,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
       <div class="stat-row">
         <div class="stat"><b data-count="12">0</b><span>Projects Built</span></div>
         <div class="stat"><b data-count="9">0</b><span>Tools & Libraries</span></div>
-        <div class="stat"><b data-count="3">0</b><span>Certifications</span></div>
+        <div class="stat"><b data-count="4">0</b><span>Certifications</span></div>
         <div class="stat"><b data-count="1200" data-suffix="+">0</b><span>Hours Practiced</span></div>
       </div>
     </div>
@@ -442,6 +520,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   <h2 class="section-title">Selected work.</h2>
   <p class="section-sub">A few projects that show the range from raw data to finished dashboard.</p>
   <div class="project-grid" id="projectGrid"></div>
+</section>
+
+<!-- ============ CERTIFICATIONS ============ -->
+<section id="certifications">
+  <p class="eyebrow">Certifications</p>
+  <h2 class="section-title">Credentials that back the skills.</h2>
+  <p class="section-sub">Verified data analytics and business analysis certifications.</p>
+  <div class="cert-grid" id="certGrid"></div>
 </section>
 
 <!-- ============ EDUCATION ============ -->
@@ -557,6 +643,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
         <li><a href="#education">Education</a></li>
       </ul>
     </div>
@@ -620,6 +707,13 @@ const PROJECTS = [
   { title:"E-commerce A/B Test Report", metric:"+12% conversion insight", desc:"Statistical analysis of a checkout-flow experiment, including significance testing and a plain-language recommendation memo for stakeholders.", tags:["Python","Statistics","Excel"], github:"#", demo:"#" },
 ];
 
+const CERTIFICATIONS = [
+  { icon:"📊", title:"Data Analytics Certification", issuer:"PW Skills", date:"2025", desc:"End-to-end program covering SQL, Python, statistics, Power BI/Tableau and applied analytics projects.", link:"#" },
+  { icon:"🧮", title:"Business Analytics & SQL", issuer:"PW Skills", date:"2025", desc:"Business-focused analytics track: requirement gathering, KPI design, and SQL for decision-making.", link:"#" },
+  { icon:"📈", title:"Microsoft Power BI Data Analyst", issuer:"Microsoft", date:"2024", desc:"Data modeling, DAX, and interactive dashboard design in Power BI Desktop and Service.", link:"#" },
+  { icon:"🐍", title:"Python for Data Science", issuer:"Coursera", date:"2024", desc:"Pandas, NumPy, and data-wrangling fundamentals applied to real-world datasets.", link:"#" },
+];
+
 const EDUCATION = [
   { date:"2025", title:"Data Analytics Certification — PW Skills", desc:"Intensive program covering SQL, Python, statistics, Power BI/Tableau, and end-to-end analytics projects." },
   { date:"2022 – 2025", title:"B.Sc. in Statistics / Computer Applications", desc:"Core coursework in probability, statistics, and programming that underpins day-to-day analytical work." },
@@ -666,6 +760,23 @@ function renderProjects(){
     </div>`).join('');
 }
 
+function renderCertifications(){
+  const wrap = document.getElementById('certGrid');
+  wrap.innerHTML = CERTIFICATIONS.map(c => `
+    <div class="cert-card reveal">
+      <div class="cert-badge">${c.icon}</div>
+      <div class="cert-body">
+        <h3>${c.title}</h3>
+        <div class="cert-issuer">${c.issuer}</div>
+        <p>${c.desc}</p>
+        <div class="cert-meta">
+          <span class="cert-date">${c.date}</span>
+          <a class="cert-link" href="${c.link}" target="_blank" rel="noopener">Verify ↗</a>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
 function renderEducation(){
   const wrap = document.getElementById('eduTimeline');
   wrap.innerHTML = EDUCATION.map(e => `
@@ -688,7 +799,7 @@ function renderJourney(){
     </div>`).join('');
 }
 
-renderSkills(); renderProjects(); renderEducation(); renderJourney();
+renderSkills(); renderProjects(); renderCertifications(); renderEducation(); renderJourney();
 document.getElementById('year').textContent = new Date().getFullYear();
 
 /* =====================================================
@@ -900,6 +1011,130 @@ pointsSlider.addEventListener('input', drawChart);
 window.addEventListener('resize', drawChart);
 themeToggle.addEventListener('click', ()=> setTimeout(drawChart,50));
 drawChart();
+
+/* =====================================================
+   9b. HERO BACKGROUND — animated data-network canvas
+   Lightweight, dependency-free node/edge animation themed around
+   data/analytics. Pauses off-screen, on hidden tabs, and respects
+   prefers-reduced-motion for performance & accessibility.
+   ===================================================== */
+(function(){
+  const canvas = document.getElementById('heroCanvas');
+  if(!canvas) return;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion) return;
+
+  const ctx2 = canvas.getContext('2d', { alpha:true });
+  const heroSection = document.getElementById('home');
+  let W=0, H=0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  let nodes = [];
+  let running = false;
+  let rafId = null;
+
+  function accentColor(varName, fallback){
+    const v = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+    return v || fallback;
+  }
+
+  function sizeCanvas(){
+    const rect = heroSection.getBoundingClientRect();
+    W = Math.max(rect.width, window.innerWidth);
+    H = Math.max(rect.height, 480);
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx2.setTransform(dpr,0,0,dpr,0,0);
+    buildNodes();
+  }
+
+  function buildNodes(){
+    // fewer nodes on small / low-power screens for speed
+    const area = W * H;
+    const density = window.innerWidth < 640 ? 22000 : 15000;
+    const count = Math.max(18, Math.min(70, Math.round(area / density)));
+    nodes = Array.from({length:count}, () => ({
+      x: Math.random()*W,
+      y: Math.random()*H,
+      vx: (Math.random()-0.5)*0.28,
+      vy: (Math.random()-0.5)*0.28,
+      r: Math.random()*1.6 + 0.9
+    }));
+  }
+
+  function step(){
+    if(!running){ return; }
+    const accent = accentColor('--accent', '#2DD4BF');
+    const accent2 = accentColor('--accent-2', '#F5A623');
+    ctx2.clearRect(0,0,W,H);
+
+    // update + draw nodes
+    nodes.forEach(n=>{
+      n.x += n.vx; n.y += n.vy;
+      if(n.x < 0 || n.x > W) n.vx *= -1;
+      if(n.y < 0 || n.y > H) n.vy *= -1;
+    });
+
+    // connecting edges (data-graph look) — only between near nodes
+    const linkDist = 130;
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const a = nodes[i], b = nodes[j];
+        const dx = a.x-b.x, dy = a.y-b.y;
+        const d = Math.sqrt(dx*dx+dy*dy);
+        if(d < linkDist){
+          ctx2.strokeStyle = accent;
+          ctx2.globalAlpha = (1 - d/linkDist) * 0.35;
+          ctx2.lineWidth = 1;
+          ctx2.beginPath();
+          ctx2.moveTo(a.x,a.y); ctx2.lineTo(b.x,b.y);
+          ctx2.stroke();
+        }
+      }
+    }
+    ctx2.globalAlpha = 1;
+    nodes.forEach((n,i)=>{
+      ctx2.fillStyle = i % 5 === 0 ? accent2 : accent;
+      ctx2.beginPath();
+      ctx2.arc(n.x, n.y, n.r, 0, Math.PI*2);
+      ctx2.fill();
+    });
+
+    rafId = requestAnimationFrame(step);
+  }
+
+  function start(){
+    if(running) return;
+    running = true;
+    rafId = requestAnimationFrame(step);
+  }
+  function stop(){
+    running = false;
+    if(rafId) cancelAnimationFrame(rafId);
+  }
+
+  // only animate while the hero is actually visible — saves CPU/battery
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting && !document.hidden) start(); else stop();
+    });
+  }, { threshold: 0.05 });
+  io.observe(heroSection);
+
+  document.addEventListener('visibilitychange', ()=>{
+    if(document.hidden) stop();
+    else if(heroSection.getBoundingClientRect().top < window.innerHeight) start();
+  });
+
+  let resizeTimer;
+  window.addEventListener('resize', ()=>{
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(sizeCanvas, 150);
+  });
+
+  sizeCanvas();
+  start();
+})();
 
 /* =====================================================
    9. CONTACT FORM (mailto fallback — see comment near <form>)
